@@ -74,13 +74,7 @@ class << Rouge::Builtins
     [Rouge::Symbol[:quote], form]
   end
 
-  def fn(context, *args)
-    if args[0].is_a? Rouge::Symbol
-      name = args.shift.to_sym
-    end
-
-    argv, *body = args
-
+  def _extract_rest(argv)
     if argv[-2] == Rouge::Symbol[:&]
       rest = argv[-1]
       argv = argv[0...-2]
@@ -91,20 +85,50 @@ class << Rouge::Builtins
       rest = nil
     end
 
+    return argv, rest
+  end
+
+  def _extract_block(argv)
     if argv[-2] == Rouge::Symbol[:|]
       block = argv[-1]
       argv = argv[0...-2]
     else
       block = nil
     end
+    return argv, block
+  end
+
+  def fn(context, *args)
+    if args[0].is_a? Rouge::Symbol
+      name = args.shift.to_sym
+    end
+
+    argv, *body = args
+
+    argv, rest = _extract_rest(argv)
+    argv, block = _extract_block(argv)
+    args = argv.dup.freeze
 
     fn = lambda {|*inner_args, &blockgiven|
+
+      argv = args.dup
+      arity = inner_args.length
+
+      if argv[0].is_a? Array
+        fun = argv.find {|f| f[1].length == arity } ||
+              argv.find {|f| f[1].include? Rouge::Symbol[:&] }
+        _, argv, *body = fun
+
+       argv, rest = _extract_rest(argv)
+       argv, block = _extract_block(argv)
+      end
+
       if !rest ? (inner_args.length != argv.length) :
-                 (inner_args.length < argv.length)
+        (inner_args.length < argv.length)
         begin
           raise ArgumentError,
-              "wrong number of arguments " \
-              "(#{inner_args.length} for #{argv.length})"
+            "wrong number of arguments " \
+            "(#{inner_args.length} for #{argv.length})"
         rescue ArgumentError => e
           # orig = e.backtrace.pop
           # e.backtrace.unshift "(rouge):?:FN call (#{name || "<anonymous>"})"
@@ -121,7 +145,7 @@ class << Rouge::Builtins
 
       if rest
         inner_context.set_here(rest.name,
-                         Rouge::Seq::Cons[*inner_args[argv.length..-1]])
+                               Rouge::Seq::Cons[*inner_args[argv.length..-1]])
       end
 
       if block
@@ -152,6 +176,16 @@ class << Rouge::Builtins
 
     original_argv = argv
 
+    if argv[0].is_a? Array
+      arities = []
+      args.each do |form|
+        arities <<  _compile_fn(ns, lexicals, *form)
+      end
+      return [Rouge::Symbol[:fn],
+              *(name ? [name] : []),
+              arities]
+    end
+
     if argv[-2] == Rouge::Symbol[:&]
       rest = argv[-1]
       argv = argv[0...-2]
@@ -176,7 +210,7 @@ class << Rouge::Builtins
     lexicals << rest.name if rest
     lexicals << block.name if block
 
-    [Rouge::Symbol[:fn],
+    compiled = [Rouge::Symbol[:fn],
      *(name ? [name] : []),
      original_argv,
      *Rouge::Compiler.compile(ns, lexicals, body)]
