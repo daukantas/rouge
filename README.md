@@ -1,4 +1,4 @@
-# Rouge [![Build Status](https://secure.travis-ci.org/rouge-lang/rouge.png)](http://travis-ci.org/rouge-lang/rouge)
+# Rouge [![Build Status](https://secure.travis-ci.org/kivikakk/rouge.png)](http://travis-ci.org/kivikakk/rouge)
 
 **Ruby + Clojure = Rouge.**
 
@@ -19,14 +19,9 @@ rouge
 
 You'll see the `user=>` prompt.  Enjoy!
 
-You can discuss on Google Groups' [rouge-talk](https://groups.google.com/forum/#!forum/rouge-talk),
-or on `#rouge` on Freenode.
-
 ## example
 
-See [boot.rg](https://github.com/rouge-lang/rouge/blob/master/lib/boot.rg),
-[em-rg](https://github.com/kivikakk/em-rg),
-[mechanize-rg](https://github.com/kivikakk/mechanize-rg), but to demonstrate
+See [boot.rg](https://github.com/kivikakk/rouge/blob/master/lib/boot.rg), but to demonstrate
 salient features:
 
 ``` clojure
@@ -62,7 +57,7 @@ user=>
 
 ## TODO
 
-See [TODO](https://github.com/rouge-lang/rouge/blob/master/misc/TODO), but big ones
+See [TODO](https://github.com/kivikakk/rouge/blob/master/misc/TODO), but big ones
 include:
 
 * making seqs nicer
@@ -78,18 +73,15 @@ include:
 * Add tests!  This is so I don't break your lovely addition in the future by accident.
 * Commit and pull request!  (Bonus points for topic branches.)
 
-**Also**, if there's something in particular you want that's missing, feel free to put your vote in by [opening an Issue](https://github.com/rouge-lang/rouge/issues/new) so I know where to direct my attention.
+**Also**, if there's something in particular you want that's missing, feel free to put your vote in by [opening an Issue](https://github.com/kivikakk/rouge/issues/new) so I know where to direct my attention.
 
 ## authorship
 
 Original author: [Yuki Izumi](https://github.com/kivikakk).
 
-Committers:
-
-* [Joel Holdbrooks](https://github.com/noprompt)
-
 Unreserved thanks to the following people for their contributions.
 
+* [Joel Holdbrooks](https://github.com/noprompt)
 * [Russell Whitaker](https://github.com/russellwhitaker)
 * [Misha Moroshko](https://github.com/moroshko)
 * [Anthony Grimes](https://github.com/Raynes)
@@ -98,7 +90,7 @@ Unreserved thanks to the following people for their contributions.
 
 The [MIT license](http://opensource.org/licenses/MIT).
 
-Copyright &copy; 2012&ndash;2013 Yuki Izumi
+Copyright &copy; 2012&ndash;2016 Yuki Izumi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
