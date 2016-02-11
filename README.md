@@ -81,10 +81,14 @@ Original author: [Yuki Izumi](https://github.com/kivikakk).
 
 Unreserved thanks to the following people for their contributions.
 
-* [Joel Holdbrooks](https://github.com/noprompt)
-* [Russell Whitaker](https://github.com/russellwhitaker)
-* [Misha Moroshko](https://github.com/moroshko)
 * [Anthony Grimes](https://github.com/Raynes)
+* [Brian Shirai](https://github.com/brixen)
+* [Connor Mendenhall](https://github.com/ecmendenhall)
+* [Erik Erwitt](https://github.com/eerwitt)
+* [Joel Holdbrooks](https://github.com/noprompt)
+* [Misha Moroshko](https://github.com/moroshko)
+* [Russell Whitaker](https://github.com/russellwhitaker)
+* [Xu Hui Hui](https://github.com/xhh)
 
 ## copyright and licensing
 
