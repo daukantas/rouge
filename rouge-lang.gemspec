@@ -10,11 +10,11 @@ Gem::Specification.new do |gem|
   gem.homepage      = "https://github.com/rouge-lang/rouge"
 
   gem.add_development_dependency('rake')
-  gem.add_development_dependency('autotest')
-  gem.add_development_dependency('autotest-growl')
-  gem.add_development_dependency('autotest-fsevent')
+  gem.add_development_dependency('autotest', '~> 4.4.6')
+  gem.add_development_dependency('autotest-growl', '~> 0.2.16')
+  gem.add_development_dependency('autotest-fsevent', '~> 0.2.8')
   gem.add_development_dependency('ZenTest')
-  gem.add_development_dependency('rspec')
+  gem.add_development_dependency('rspec', '~> 2.11.0')
   gem.add_development_dependency('term-ansicolor')
 
   gem.files         = `git ls-files`.split($\)
