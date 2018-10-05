@@ -1,7 +1,7 @@
 ;; -*- mode: clojure; -*-
 
 (ns ^{:doc "The Rouge core."
-      :author "Yuki Izumi"}
+      :author "Ashe Connor"}
   rouge.core
   (:use ruby))
 
